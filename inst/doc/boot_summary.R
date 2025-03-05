@@ -16,6 +16,9 @@ boot_summary(model)
 # multiplicity using Holm's method:
 boot_summary(model, R = 9999, adjust.method = "holm")
 
+# Use case resampling instead of residual resampling:
+boot_summary(model, method = "case")
+
 # Export results to a gt table:
 boot_summary(model, R = 9999) |>
   summary_to_gt()
@@ -38,6 +41,10 @@ boot_summary(model, R = 9999) |>
 #             data = grouseticks, family = poisson)
 #  boot_summary(model, R = 999, parallel = "multicore", ncpus = 10)
 
+## ----eval = FALSE-------------------------------------------------------------
+#  model <- lm(mpg ~ hp + vs, data = mtcars)
+#  boot_summary(model, R = 9999, ncores = 10)
+
 ## ----message = FALSE----------------------------------------------------------
 library(survival)
 # Weibull AFT model:
@@ -53,6 +60,9 @@ model <- coxph(formula = Surv(time, status) ~ age + sex, data = lung,
 censboot_summary(model)
 # Table with original coefficients:
 censboot_summary(model, coef = "raw")
+
+## ----eval = FALSE-------------------------------------------------------------
+#  censboot_summary(model, parallel = "multicore", ncpus = 10)
 
 ## ----message = FALSE----------------------------------------------------------
 # Hypothesis test for the city data

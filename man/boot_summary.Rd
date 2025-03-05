@@ -19,7 +19,7 @@ boot_summary(
 \arguments{
 \item{model}{An object fitted using e.g. "lm", "glm", "glm.nb", "nls", "rlm", "polr", lmer", or "glmer".}
 
-\item{type}{A vector of character strings representing the type of interval to base the test on. The value should be one of "norm", "basic", "stud", "bca", and "perc" (the default). "stud" and "bca" are not supported for "lmer" and "glmer" models.}
+\item{type}{A vector of character strings representing the type of interval to base the test on. The value should be one of "norm", "basic", "bca", and "perc" (the default). "bca" is not supported for "lmer" and "glmer" models.}
 
 \item{method}{The method used for bootstrapping. For "lm" and "nls" objects use either "residual" (for resampling of scaled and centred residuals, the default) or "case" (for case resampling). For "glm" objects, use "case" (the default). For "merMod" objects (mixed models) use either "parametric" (the default) or "semiparametric".}
 
@@ -62,4 +62,7 @@ boot_summary(model, R = 99, adjust.method = "holm")
 \references{
 \insertRef{hall92}{boot.pval}
 \insertRef{thulin21}{boot.pval}
+}
+\seealso{
+\code{\link[=boot_t_test]{boot_t_test()}} for bootstrap t-tests, \code{\link[=boot_median_test]{boot_median_test()}} for bootstrap tests for medians.
 }
